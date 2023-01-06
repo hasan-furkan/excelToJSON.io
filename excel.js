@@ -28,19 +28,21 @@ document.getElementById('button').addEventListener("click", () => {
 
 
 function copy() {
-    const copyText = document.getElementById("jsondata").textContent;
-    const textArea = document.createElement('textarea');
-    textArea.textContent = copyText;
-    document.body.append(textArea);
-    textArea.select();
-    document.execCommand("copy");
+    if(selectedFile){
+        const copyText = document.getElementById("jsondata").textContent;
+        const textArea = document.createElement('textarea');
+        textArea.textContent = copyText;
+        document.body.append(textArea);
+        textArea.select();
+        document.execCommand("copy");
 
-    document.getElementById("success").style.display = "block"
-    document.getElementById("success").innerHTML = "copy to clipboard"
+        document.getElementById("success").style.display = "block"
+        document.getElementById("success").innerHTML = "copy to clipboard"
 
-    setTimeout(() => {
-        document.getElementById("success").style.display = "none"
-
-    } , 1000)
+        setTimeout(() => {
+            document.getElementById("success").style.display = "none"
+            textArea.style.display = "none"
+        } , 1000)
+    }
 
 }
